@@ -28,7 +28,7 @@ class MealSelection extends Component<Props> {
 
     handlePeopleCountChange = (e: SyntheticEvent<HTMLInputElement>) => {
         let peopleCount = parseInt(e.currentTarget.value);
-        peopleCount = isNaN(peopleCount) ? 1 : Math.max(1, Math.min(10, peopleCount));
+        peopleCount = isNaN(peopleCount) ? '' : Math.max(1, Math.min(10, peopleCount));
         this.props.updateState({peopleCount});
     }
 
