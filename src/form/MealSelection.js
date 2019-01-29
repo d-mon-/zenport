@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import StepperButtons from '../stepper/StepperButtons';
 import { FieldContainerStyle, InputContainerStyle, LabelStyle, InputStyle } from './style';
 
+import type { FormState, MealType } from '../types';
+
 type Props = {
-    updateState: (partialState: $Shape<State>) => void,
+    updateState: (partialState: $Shape<FormState>) => void,
     nextStep: () => void,
-    selectedMeal: "breakfast" | "lunch" | "dinner",
+    selectedMeal: MealType,
     peopleCount: number,
 };
 
@@ -14,16 +16,16 @@ type Props = {
  * options breakfast, lunch & dinner are hard coded
  */
 class MealSelection extends Component<Props> {
-    handleMealChange = (e) => {
+    handleMealChange = (e: SyntheticEvent<HTMLSelectElement>) => {
         this.props.updateState({
-            selectedMeal: e.target.value,
+            selectedMeal: e.currentTarget.value,
             selectedRestaurant: "",
             selectedDishes:[],
         });
     }
 
-    handlePeopleCountChange = (e) => {
-        const peopleCount = parseInt(e.target.value);
+    handlePeopleCountChange = (e: SyntheticEvent<HTMLInputElement>) => {
+        const peopleCount = parseInt(e.currentTarget.value);
         this.props.updateState({peopleCount: Math.max(1, Math.min(10, peopleCount))});
     }
 

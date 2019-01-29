@@ -3,16 +3,13 @@ import React, { Component } from 'react';
 import uuid from 'uuid'; // use short uuid to avoid rendering problem (especially in a case of empty dishId)
 import { FieldContainerStyle, InputContainerStyle, LabelStyle, InputStyle, PlusStyle, ErrorStyle } from './style';
 
+import type { SelectedDishType } from '../types';
 
 type Props = {
     addDish: ({dishId: number, count: number, id: string}) => void,
     filteredDishes: Array<any>,
     setError: (error: string) => void,
-    selectedDishes: Array<{
-        id: string,
-        dishId: "" | number,
-        count: number,
-    }>,
+    selectedDishes: Array<SelectedDishType>,
 };
 
 type State = {
@@ -26,12 +23,13 @@ class DishSelector extends Component<Props, State> {
         count: 1,
     }
 
-    handleDishChange = (e) => {
-        this.setState({dishId: parseInt(e.target.value)});
+    handleDishChange = (e: SyntheticEvent<HTMLSelectElement>) => {
+        this.setState({dishId: parseInt(e.currentTarget.value)});
     }
 
-    handlePeopleCountChange = (e) => {
-        const value = parseInt(e.target.value);
+
+    handlePeopleCountChange = (e: SyntheticEvent<HTMLInputElement>) => {
+        const value = parseInt(e.currentTarget.value);
         const count = isNaN(value) ? '' : Math.max(1, value);
         this.setState({count});
     }
@@ -43,7 +41,7 @@ class DishSelector extends Component<Props, State> {
             setError('You must choose a dish first');
             return false;
         }   
-        if (!(count>=1)) {
+        if (count === "" || !(count>=1)) {
             setError('You must set a valid number');
             return false;
         }
@@ -56,8 +54,8 @@ class DishSelector extends Component<Props, State> {
         
         if (this.validateFields()) {
             addDish({
-                dishId,
-                count,
+                dishId: ((dishId: any): number), // type is checked during validation
+                count: ((count: any): number), // type is checked during validation
                 id: uuid.v4(),
             });
             this.setState({

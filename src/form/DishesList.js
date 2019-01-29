@@ -2,19 +2,19 @@
 import React, { Component } from 'react';
 import { dishesAsMap } from '../services/restaurantService';
 
+import type { SelectedDishType } from '../types';
 
 type Props = {
-    removeDish: (id: string) => void,
-    selectedDishes:  Array<{
-        id: string,
-        dishId: "" | number,
-        count: number,
-    }>,
-};
+    removeDish?: (id: string) => void,
+    selectedDishes: Array<SelectedDishType>,
+}
 
 class DishesList extends Component<Props> {
-    removeDishWrapper(id) {
-        this.props.removeDish(id);
+    removeDishWrapper(id: string) {
+        const { removeDish } = this.props;
+        if (removeDish) {
+            removeDish(id);
+        }
     }
 
     render() {

@@ -1,12 +1,12 @@
 // @flow
 import React, { Component } from 'react';
-
 import MealSelection from './form/MealSelection';
 import RestaurantSelection from './form/RestaurantSelection';
 import DishesSelection from './form/DishesSelection';
 import Review from './form/Review';
-
 import Stepper from './stepper/Stepper';
+
+import type { FormState } from './types';
 
 const MainContainerStyle = {
   display: 'flex',
@@ -15,18 +15,6 @@ const MainContainerStyle = {
 };
 
 type Props = {
-};
-
-type State = {
-  step: number,
-  selectedMeal: "breakfast" | "lunch" | "dinner",
-  peopleCount: number,
-  selectedRestaurant: string,
-  selectedDishes: Array<{
-      id: string,
-      dishId: "" | number,
-      count: number,
-  }>,
 };
 
 /**
@@ -38,7 +26,7 @@ type State = {
  * but it's not very effective with a Stepper 
  * and it would go against the interview necessity
  */
-class App extends Component<Props, State> {
+class App extends Component<Props, FormState> {
   state = {
     step: 2,
     selectedMeal: "lunch",
@@ -47,7 +35,7 @@ class App extends Component<Props, State> {
     selectedDishes:[],
   };
 
-  updateState = (partialState: $Shape<State>) => {
+  updateState = (partialState: $Shape<FormState>) => {
     this.setState(partialState);
   }
 

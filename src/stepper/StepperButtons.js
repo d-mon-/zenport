@@ -26,7 +26,7 @@ const MainContainerStyle = {
 }
 
 type Props = {
-    prevStep: () => void,
+    prevStep?: () => void,
     nextStep: () => void,
     submit?: boolean,
     isValid: boolean,

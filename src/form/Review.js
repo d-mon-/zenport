@@ -4,18 +4,16 @@ import StepperButtons from '../stepper/StepperButtons';
 import DishesList from './DishesList';
 import { TableKeyStyle } from './style';
 
+import type { SelectedDishType, MealType } from '../types';
+
 type Props = {
     prevStep: () => void,
     submit: () => void,   
-    selectedMeal: "breakfast" | "lunch" | "dinner",
+    selectedMeal: MealType,
     peopleCount: number,
     selectedMeal: string,
     selectedRestaurant: string,
-    selectedDishes: Array<{
-        id: string,
-        dishId: "" | number,
-        count: number,
-    }>,
+    selectedDishes: Array<SelectedDishType>,
 };
 
 /**

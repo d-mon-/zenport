@@ -7,19 +7,17 @@ import { FieldContainerStyle, InputContainerStyle, LabelStyle, InputStyle, PlusS
 import DishSelector from './DishSelector';
 import DishesList from './DishesList';
 
+import type { FormState, SelectedDishType, MealType } from '../types';
+
 type Props = {
-    updateState: (partialState: $Shape<State>) => void,
+    updateState: (partialState: $Shape<FormState>) => void,
     prevStep: () => void,
     nextStep: () => void,
-    selectedMeal: "breakfast" | "lunch" | "dinner",
+    selectedMeal: MealType,
     peopleCount: number,
     selectedMeal: string,
     selectedRestaurant: string,
-    selectedDishes: Array<{
-        id: string,
-        dishId: "" | number,
-        count: number,
-    }>,
+    selectedDishes: Array<SelectedDishType>,
 };
 
 type State = {
@@ -31,7 +29,7 @@ type State = {
  * I choose to make the selection more interactive
  */
 class RestaurantSelection extends Component<Props, State> {
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
         this.state = this.buildFilteredDishesState();
     }
@@ -42,14 +40,14 @@ class RestaurantSelection extends Component<Props, State> {
         }
     }
 
-    buildFilteredDishesState(props = this.props) {
+    buildFilteredDishesState(props: Props = this.props) {
         return {
             error: "",
             filteredDishes: getDishesByRestaurant(props.selectedMeal, props.selectedRestaurant),
         };
     }
 
-    updateDishes(selectedDishes) {
+    updateDishes(selectedDishes: Array<SelectedDishType>) {
         const { updateState } = this.props;
         const { error } = this.state;
         updateState({selectedDishes});
@@ -58,21 +56,21 @@ class RestaurantSelection extends Component<Props, State> {
         }
     }
 
-    addDish = (dish) => {
+    addDish = (dish: SelectedDishType) => {
         const { selectedDishes } = this.props;
         this.updateDishes([...selectedDishes, dish]);
     }
 
-    removeDish = (id) => {
+    removeDish = (id: string) => {
         const { selectedDishes } = this.props;
         this.updateDishes(selectedDishes.filter(dish => dish.id !== id));
     }
 
-    setError = (error) => {
+    setError = (error: string) => {
         this.setState({error});
     }
 
-    validateFields(selectedDishes = this.props.selectedDishes) {
+    validateFields(selectedDishes: Array<SelectedDishType> = this.props.selectedDishes) {
         const { peopleCount } = this.props;
 
         if (selectedDishes.length === 0) {

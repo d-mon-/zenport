@@ -4,18 +4,20 @@ import { getRestaurants } from '../services/restaurantService';
 import StepperButtons from '../stepper/StepperButtons';
 import { FieldContainerStyle, LabelStyle, InputStyle } from './style';
 
+import type { FormState, MealType } from '../types';
+
 type Props = {
-    updateState: (partialState: $Shape<State>) => void,
+    updateState: (partialState: $Shape<FormState>) => void,
     prevStep: () => void,
     nextStep: () => void,
-    selectedMeal: "breakfast" | "lunch" | "dinner",
+    selectedMeal: MealType,
     selectedRestaurant: string,
 };
 
 class RestaurantSelection extends Component<Props> {
-    handleRestaurantChange = (e) => {
+    handleRestaurantChange = (e: SyntheticEvent<HTMLSelectElement>) => {
         this.props.updateState({
-            selectedRestaurant: e.target.value,
+            selectedRestaurant: e.currentTarget.value,
             selectedDishes:[],
         });
     }
