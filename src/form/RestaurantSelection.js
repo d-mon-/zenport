@@ -14,6 +14,9 @@ type Props = {
     selectedRestaurant: string,
 };
 
+/**
+ * Step 2: Select a restaurant depending of the meal you want
+ */
 class RestaurantSelection extends Component<Props> {
     handleRestaurantChange = (e: SyntheticEvent<HTMLSelectElement>) => {
         this.props.updateState({

@@ -1,9 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import uuid from 'uuid'; // use short uuid to avoid rendering problem (especially in a case of empty dishId)
-import { getDishesByRestaurant, dishesAsMap } from '../services/restaurantService';
+import { getDishesByRestaurant } from '../services/restaurantService';
 import StepperButtons from '../stepper/StepperButtons';
-import { FieldContainerStyle, InputContainerStyle, LabelStyle, InputStyle, PlusStyle, ErrorStyle } from './style';
+import { ErrorStyle } from './style';
 import DishSelector from './DishSelector';
 import DishesList from './DishesList';
 
@@ -26,7 +25,8 @@ type State = {
 };
 
 /**
- * I choose to make the selection more interactive
+ * Manager to add more servings to the state of the form
+ * also display error when necessary
  */
 class RestaurantSelection extends Component<Props, State> {
     constructor(props: Props) {
@@ -100,7 +100,7 @@ class RestaurantSelection extends Component<Props, State> {
     render() {
         const { selectedDishes, prevStep } = this.props;
         const { filteredDishes, error } = this.state;
-            
+
         return (
             <div>
                 <DishesList selectedDishes={selectedDishes} removeDish={this.removeDish} />

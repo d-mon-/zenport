@@ -16,9 +16,6 @@ type Props = {
     selectedDishes: Array<SelectedDishType>,
 };
 
-/**
- * options breakfast, lunch & dinner are hard coded
- */
 class Review extends Component<Props> {
     
     render() {

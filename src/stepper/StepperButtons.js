@@ -33,7 +33,7 @@ type Props = {
 };
 
 /**
- * options breakfast, lunch & dinner are hard coded
+ * Footer of the form to step forward or backward
  * "previous button" is replaced by a div to keep the same flex disposition in the window
  */
 function StepperButtons(props:Props) {

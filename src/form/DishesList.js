@@ -9,6 +9,12 @@ type Props = {
     selectedDishes: Array<SelectedDishType>,
 }
 
+/**
+ * List of dishes selected by the user
+ * it is used both during the selection and the review
+ * 
+ * TODO add an input during the selection stage to replace the existing value.
+ */
 class DishesList extends Component<Props> {
     removeDishWrapper(id: string) {
         const { removeDish } = this.props;

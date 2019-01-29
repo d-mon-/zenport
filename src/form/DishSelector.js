@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import uuid from 'uuid'; // use short uuid to avoid rendering problem (especially in a case of empty dishId)
-import { FieldContainerStyle, InputContainerStyle, LabelStyle, InputStyle, PlusStyle, ErrorStyle } from './style';
+import { FieldContainerStyle, InputStyle, PlusStyle } from './style';
 
 import type { SelectedDishType } from '../types';
 
@@ -17,6 +17,9 @@ type State = {
     count: "" | number,
 }
 
+/**
+ * simple component to select a dish and the number of serving
+ */
 class DishSelector extends Component<Props, State> {
     state = {
         dishId: '',
@@ -55,7 +58,7 @@ class DishSelector extends Component<Props, State> {
         if (this.validateFields()) {
             addDish({
                 dishId: ((dishId: any): number), // type is checked during validation
-                count: ((count: any): number), // type is checked during validation
+                count: ((count: any): number),
                 id: uuid.v4(),
             });
             this.setState({

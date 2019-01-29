@@ -1,7 +1,9 @@
 import json from '../data/dishes.json';
 
+import type { MealType } from '../types';
+
 const restaurantsMemoizer = new Map();
-export function getRestaurants(meal: string) {
+export function getRestaurants(meal: MealType) {
     let restaurants = restaurantsMemoizer.get(meal);
     if (!restaurants) {
         const restaurantSets = new Set();
@@ -14,8 +16,7 @@ export function getRestaurants(meal: string) {
     return restaurants;
 }
 
-// TODO change with lunch, dinner, ...
-export function getDishesByRestaurant(selectedMeal: string, selectedRestaurant: string) {
+export function getDishesByRestaurant(selectedMeal: MealType, selectedRestaurant: string) {
     return json.dishes.filter(dish => dish.restaurant === selectedRestaurant && dish.availableMeals.includes(selectedMeal));
 }
 

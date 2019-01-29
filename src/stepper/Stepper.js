@@ -30,11 +30,14 @@ type Props = {
     currentStep: number,
 };
 
-// could be improved by using context
+// TODO could be improved by using a context
 const Steps = ['step 1', 'step 2', 'step 3', 'review'];
 
 /**
- * options breakfast, lunch & dinner are hard coded
+ * Easy stepper
+ * only here to display the position
+ * 
+ * TODO: add interaction (ex: click 'step 1')
  */
 class Stepper extends Component<Props> {
     render() {

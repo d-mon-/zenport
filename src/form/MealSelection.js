@@ -13,6 +13,8 @@ type Props = {
 };
 
 /**
+ * Component to select a meal
+ * default at "lunch"
  * options breakfast, lunch & dinner are hard coded
  */
 class MealSelection extends Component<Props> {
@@ -25,10 +27,12 @@ class MealSelection extends Component<Props> {
     }
 
     handlePeopleCountChange = (e: SyntheticEvent<HTMLInputElement>) => {
-        const peopleCount = parseInt(e.currentTarget.value);
-        this.props.updateState({peopleCount: Math.max(1, Math.min(10, peopleCount))});
+        let peopleCount = parseInt(e.currentTarget.value);
+        peopleCount = isNaN(peopleCount) ? 1 : Math.max(1, Math.min(10, peopleCount));
+        this.props.updateState({peopleCount});
     }
 
+    // just in case, but handlePeopleCountChange should ensure the validity (we force a number between 1 and 10)
     areFieldsValid() {
         const { peopleCount } = this.props;
         return peopleCount >= 1 && peopleCount <= 10;
