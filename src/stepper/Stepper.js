@@ -30,7 +30,7 @@ type Props = {
     currentStep: number,
 };
 
-// could be improved by using context and add a link between the step and the component View
+// could be improved by using context
 const Steps = ['step 1', 'step 2', 'step 3', 'review'];
 
 /**
