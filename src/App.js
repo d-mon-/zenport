@@ -28,10 +28,10 @@ type Props = {
  */
 class App extends Component<Props, FormState> {
   state = {
-    step: 2,
+    step: 0,
     selectedMeal: "lunch",
     peopleCount: 1,
-    selectedRestaurant: "Mc Donalds",
+    selectedRestaurant: "",
     selectedDishes:[],
   };
 
@@ -54,12 +54,17 @@ class App extends Component<Props, FormState> {
   }
 
   submit = () => {
-    console.log(this.state);
+    const { selectedMeal, peopleCount, selectedRestaurant, selectedDishes } = this.state;
+    console.log('result', {
+      selectedMeal,
+      peopleCount,
+      selectedRestaurant,
+      selectedDishes,
+    });
   }
 
   getView() {
     const { step, selectedMeal, peopleCount, selectedRestaurant, selectedDishes } = this.state;
-    console.log(this.state);
     switch(step) {
       case 3:
         return (

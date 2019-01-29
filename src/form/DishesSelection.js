@@ -100,8 +100,7 @@ class RestaurantSelection extends Component<Props, State> {
     render() {
         const { selectedDishes, prevStep } = this.props;
         const { filteredDishes, error } = this.state;
-if (selectedDishes && selectedDishes[0]) {console.log(dishesAsMap.get(selectedDishes[0].dishId), selectedDishes[0].dishId, dishesAsMap);}
-        
+            
         return (
             <div>
                 <DishesList selectedDishes={selectedDishes} removeDish={this.removeDish} />
