@@ -19,6 +19,8 @@ type State = {
 
 /**
  * simple component to select a dish and the number of serving
+ * 
+ * // TODO add a maximum on the number of servings (maybe 99 ?)
  */
 class DishSelector extends Component<Props, State> {
     state = {
