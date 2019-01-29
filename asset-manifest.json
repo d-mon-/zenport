@@ -1,11 +1,11 @@
 {
-  "main.js": "/zenport-react/static/js/main.0c4a8ffa.chunk.js",
-  "main.js.map": "/zenport-react/static/js/main.0c4a8ffa.chunk.js.map",
-  "static/js/1.7a9f1fba.chunk.js": "/zenport-react/static/js/1.7a9f1fba.chunk.js",
-  "static/js/1.7a9f1fba.chunk.js.map": "/zenport-react/static/js/1.7a9f1fba.chunk.js.map",
-  "runtime~main.js": "/zenport-react/static/js/runtime~main.3c89e900.js",
-  "runtime~main.js.map": "/zenport-react/static/js/runtime~main.3c89e900.js.map",
-  "index.html": "/zenport-react/index.html",
-  "precache-manifest.8892fadbe9d6422f1f7cf973b3d2163b.js": "/zenport-react/precache-manifest.8892fadbe9d6422f1f7cf973b3d2163b.js",
-  "service-worker.js": "/zenport-react/service-worker.js"
+  "main.js": "/zenport/static/js/main.cbe2181c.chunk.js",
+  "main.js.map": "/zenport/static/js/main.cbe2181c.chunk.js.map",
+  "static/js/1.7a9f1fba.chunk.js": "/zenport/static/js/1.7a9f1fba.chunk.js",
+  "static/js/1.7a9f1fba.chunk.js.map": "/zenport/static/js/1.7a9f1fba.chunk.js.map",
+  "runtime~main.js": "/zenport/static/js/runtime~main.930e7ca6.js",
+  "runtime~main.js.map": "/zenport/static/js/runtime~main.930e7ca6.js.map",
+  "index.html": "/zenport/index.html",
+  "precache-manifest.1d93b00aac84f56fea4670ebaaaceb8f.js": "/zenport/precache-manifest.1d93b00aac84f56fea4670ebaaaceb8f.js",
+  "service-worker.js": "/zenport/service-worker.js"
 }
